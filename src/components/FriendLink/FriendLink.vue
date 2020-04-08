@@ -1,0 +1,18 @@
+<template>
+  <h1>友情链接</h1>
+</template>
+
+<script>
+export default {
+name:"friendLink",
+data(){
+  return{
+
+  }
+}
+}
+</script>
+
+<style>
+
+</style>
