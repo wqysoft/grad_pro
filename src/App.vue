@@ -2,9 +2,9 @@
   <div id="app">
        <!-- 导航栏 -->
     <el-menu :default-active="activeIndex" class="el-menu-top" mode="horizontal">
-      <el-menu-item index="1-1" class="el-menu-top-item">电话：0571-888888</el-menu-item>
-      <el-menu-item index="1-2" class="el-menu-top-item">服务时间：9：00-21：00</el-menu-item>
-      <el-menu-item index="1-3" class="el-menu-top-item">地址：浙江省杭州市江干区</el-menu-item>
+      <el-menu-item class="el-menu-top-item">电话：0571-888888</el-menu-item>
+      <el-menu-item class="el-menu-top-item">服务时间：9：00-21：00</el-menu-item>
+      <el-menu-item class="el-menu-top-item">地址：浙江省杭州市江干区</el-menu-item>
     </el-menu>
     <el-row>
       <el-col :span="16">
@@ -73,6 +73,7 @@ export default {
 }
 body {
   margin: 0;
+  width: 100%;
   font-size: 16px;
 }
 a{
@@ -84,7 +85,6 @@ a{
   margin: 0 80px;
 }
 .el-menu-top{
-  margin:0 80px;
   display: flex;
   justify-content: space-between;
 }

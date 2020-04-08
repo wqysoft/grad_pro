@@ -1,62 +1,54 @@
 <template>
    <div class="register">
-   <h1>注  册</h1>
-    <div  class="personal_item">
-      <div class="tip">用户名:</div>
-      <el-input class="textInput" placeholder="请输入用户名"/>
-    </div>
-    <div  class="personal_item">
-      <div class="tip">密码:</div>
-      <el-input class="textInput" placeholder="请输入密码"/>
-    </div>
-    <div  class="personal_item">
-      <div class="tip">确认密码:</div>
-      <el-input class="textInput" placeholder="确认密码"/>
-    </div>
-     <div  class="personal_item">
-      <div class="tip">性别:</div>
-      <el-input class="textInput" placeholder="请输入性别"/>
-    </div>
-     <div  class="personal_item">
-      <div class="tip">电话:</div>
-      <el-input class="textInput" placeholder="请输入电话"/>
-    </div>
-     <div  class="personal_item">
-      <div class="tip">地址:</div>
-      <el-input class="textInput" placeholder="请输入地址"/>
-    </div>
-     <div  class="personal_item">
-      <div class="tip">邮箱:</div>
-      <el-input class="textInput" placeholder="请输入邮箱"/>
-    </div>
-    <el-row>
-      <el-button type="danger">注册</el-button>
-    </el-row>
+     <el-menu class="login-menu">
+  <el-menu-item v-for="item in register" :key="item.id">
+    <router-link :to='item.routerName'>{{item.name}}</router-link>
+  </el-menu-item>
+  </el-menu>
+  <router-view/>
+    <p class="minitip">提示：用户名和密码只能有数字、字母、和下划线，不能有汉字和其他特殊符号。</p>
   </div>
   
 </template>
 
 <script>
+let register = [ 
+    {id:1,name:"用户注册",routerName:{name:"userRegister"}},
+    {id:2,name:"管理员注册",routerName:{name:"adminRegister"}}
+  ]
 export default {
-name:"register",
-data(){
-  return{
-
+  name: "person",
+  data() {
+    return {
+      register
+    };
   }
-}
-}
+};
 </script>
+
 <style scoped>
-.textInput {
+a{
+  color: #2c3e50;
+  font-size: 1.2em;
+  font-weight: bold;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+}
+a:hover,a:active{
+  color: #e22b61;
+}
+.minitip{
   width: 30%;
+  margin: 0 auto;
+  margin-top: 50px;
+  color: #aaa;
 }
-.tip {
-  width: 5%;
-  display: inline-block;
-  text-align: right;
-}
-.personal_item{
+.register{
   width: 100%;
-  margin:20px auto;
+}
+.login-menu{
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  margin: 0 auto;
 }
 </style>

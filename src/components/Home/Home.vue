@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="home">
     <!-- 轮播图 -->
     <el-carousel height="500px">
       <el-carousel-item v-for="item in carouses" :key="item.id">
@@ -28,18 +28,18 @@ export default {
       activeIndex: "1",
       activeIndex2: "1",
       carouses: [
-        { id: 1, src: require("../assets/banner1.jpg") },
-        { id: 2, src: require("../assets/banner2.jpg") },
-        { id: 3, src: require("../assets/banner3.jpg") },
-        { id: 4, src: require("../assets/banner4.jpg") },
-        { id: 5, src: require("../assets/banner5.jpg") }
+        { id: 1, src: require("../../assets/banner1.jpg") },
+        { id: 2, src: require("../../assets/banner2.jpg") },
+        { id: 3, src: require("../../assets/banner3.jpg") },
+        { id: 4, src: require("../../assets/banner4.jpg") },
+        { id: 5, src: require("../../assets/banner5.jpg") }
       ],
       imgList: [
-        {id: 1,src: require("../assets/eggPuff.jpg"),name: "蛋黄酥",price: 28.0},
-        {id: 2,src: require("../assets/nougat.jpg"),name: "牛奶燕麦糖",price: 28.0},
-        {id: 3,src: require("../assets/oats.jpg"),name: "牛轧糖",price: 28.0},
-        {id: 4,src: require("../assets/pineappleCake.jpg"),name: "凤梨酥",price: 28.0},
-        {id: 5,src: require("../assets/potato.jpg"),name: "麻薯",price: 28.0}
+        {id: 1,src: require("../../assets/eggPuff.jpg"),name: "蛋黄酥",price: 28.0},
+        {id: 2,src: require("../../assets/nougat.jpg"),name: "牛奶燕麦糖",price: 28.0},
+        {id: 3,src: require("../../assets/oats.jpg"),name: "牛轧糖",price: 28.0},
+        {id: 4,src: require("../../assets/pineappleCake.jpg"),name: "凤梨酥",price: 28.0},
+        {id: 5,src: require("../../assets/potato.jpg"),name: "麻薯",price: 28.0}
       ]
     };
   },
@@ -78,6 +78,9 @@ export default {
 };
 </script>
 <style scoped>
+.home{
+  width: 100%;
+}
 h1,
 h2 {
   font-weight: normal;

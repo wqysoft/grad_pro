@@ -1,15 +1,16 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/components/Home'
+import Home from '@/components/Home/Home'
 import Cart from '@/components/Cart/Cart'
 import FriendLink from '@/components/FriendLink/FriendLink'
 import MyOrder from '@/components/MyOrder/MyOrder'
 import Person from '@/components/Person/Person'
-import OrderManage from '@/components/Person/OrderManage'
-import Personal from '@/components/Person/Personal'
-import Update from '@/components/Person/Update'
 import Register from '@/components/Register/Register'
+import AdminRegister from '@/components/Register/AdminRegister'
+import UserRegister from '@/components/Register/UserRegister'
 import Login from '@/components/Login/Login'
+import AdminLogin from '@/components/Login/AdminLogin'
+import UserLogin from '@/components/Login/UserLogin'
 
 Vue.use(Router)
 
@@ -32,28 +33,7 @@ export default new Router({
     {
       path: '/person',
       name: 'person',
-      component: Person,
-      children: [
-        {
-          path: '/',
-          redirect:'/person/personal'
-        },
-        {
-          path: '/person/update',
-          name: 'p_update',
-          component: Update,
-        },
-        {
-          path: '/person/personal',
-          name: 'p_personal',
-          component: Personal,
-        },
-        {
-          path: '/person/orderManage',
-          name: 'p_orderManage',
-          component: OrderManage,
-        },
-      ]
+      component: Person
     },
     {
       path: '/cart',
@@ -63,18 +43,42 @@ export default new Router({
     {
       path: '/login',
       name: 'login',
-      component: Login
+      component: Login,
+      children: [
+        { 
+          path: '/login/userLogin',
+          name:'userLogin',
+          component:UserLogin 
+        },
+        { 
+          path: '/login/adminLogin',
+          name:'adminLogin',
+          component:AdminLogin 
+        }
+      ]
     },
     {
       path: '/register',
       name: 'register',
-      component: Register
+      component: Register,
+      children:[
+        {
+          path: '/register/userRegister',
+          name:'userRegister',
+          component:UserRegister 
+        },
+        {
+          path: '/register/adminRegister',
+          name:'adminRegister',
+          component:AdminRegister 
+        }
+      ]
     },
     {
       path: '/friendLink',
       name: 'friendLink',
       component: FriendLink,
-     
+
     },
   ]
 })
