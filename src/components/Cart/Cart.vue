@@ -1,8 +1,8 @@
 <template>
   <div>
     <template v-if="goods.length==0">
-      <div class="panel">
-          <p>购物车空空如也</p>
+      <div class="panel"  @click="gotoHome">
+          <p>请前往首页添加商品</p>
       </div>
     </template>
     <template v-else>
@@ -28,13 +28,11 @@
                 <td>{{v.name}}</td>
                 <td>{{v.price}}</td>
                 <td>
-                  <button @click="reduce(k)" class="btn btn-plus">-</button>
-                  <input type="text" v-model="v.num" class="txt">
-                  <button @click="plus(k)" class="btn btn-plus">+</button></td>
+                   <el-input-number v-model="v.num" @change="handleChange" :min="1" label="描述文字"></el-input-number>
                 <td>{{v.price*v.num}}</td>
                 <td>
                   <div class="btn-group">
-                    <button @click="del(k)" type="button" class="btn btn-del">删除</button>
+                    <button @click="del(k)" type="button" class="btn-del">删除</button>
                   </div>
                 </td>
               </tr>
@@ -42,32 +40,23 @@
           </table>
         </div>
         <div class="panel-footer">
-          合计:<span class="totalPrice">￥{{totalPrice}}</span> <button @click="buy(totalPrice)" class="btn btn-del">结算</button>
+          合计:<span class="totalPrice">￥{{totalPrice}}</span> <button @click="buy(totalPrice)" class="btn-del"> 结  算 </button>
+          <button @click="gotoHome" class="btn-del">继续购物</button>
         </div>
       </div>
     </template>
   </div>
 </template> 
 <script>
+import { prodList,goods } from '../../mock.js'
 export default {
   name: "cart",
   data() {
     return {
       num: 1,
-      goods: [
-        {
-          id: 1,
-          name: "华为 HUAWEI P30 超感光徕卡三摄麒麟",
-          price: 1999,
-          num: 1
-        },
-        {
-          id: 2,
-          name: "华为新品 nova 3全面屏高清四摄游戏手机",
-          price: 2499,
-          num: 1
-        }
-      ],
+      clickNum: 0,
+      goods: [],
+      id:'',
       //控制全选
       allChecked: true,
       //商品数据选中
@@ -75,24 +64,11 @@ export default {
     };
   },
   methods: {
-    //增加
-    plus(k) {
-      this.goods[k].num++;
-    },
-    //减少
-    reduce(k) {
-      this.goods[k].num--;
-      if (this.goods[k].num == 0) {
-        this.goods.splice(k, 1);
-      }
-    },
+    gotoHome(){ this.$router.push({ name:'home'})  },
+    handleChange(value) {console.log(value); },
     //删除
-    del(k) {
-      this.goods.splice(k, 1);
-    },
-    buy(k){
-      console.log(k)
-    }
+    del(k) { this.goods.splice(k, 1); },
+    buy(k){console.log(k)}
   },
   //计算属性
   computed: {
@@ -103,14 +79,24 @@ export default {
       });
       return total;
     }
+  },
+  mounted(){
+    this.clickNum = decodeURIComponent(this.$route.query.clickNum)
+    this.id = decodeURIComponent(this.$route.query.id)
+    this.goods.push(prodList[this.id])
+    prodList[this.id].num = this.clickNum
   }
 };
 </script>
 
 <style scoped>
 .panel{
-  width: 70%;
+  width: 80%;
   margin: 0 auto;
+  border: 1px solid #ddd;
+}
+.panel p{
+  cursor: pointer;
 }
 th,td{
  width: 15%;
@@ -124,7 +110,7 @@ width: 25%;
 .panel-footer{
   text-align: right;
   width: 90%;
-  margin-top: 30px;
+  margin: 50px 0 30px;
 }
 tr{
  height: 50px;
@@ -132,25 +118,20 @@ tr{
 .totalPrice{
   color: rgb(245, 108, 108);
 }
-.btn{
+.btn-del{
+  padding: 10px;
   outline:none;
-  height: 30px;
   color: #fff;
   background-color: rgb(245, 108, 108);
   border: none;
   border-radius: 5px;
 }
-.btn-plus{
- width: 40px;
-}
-.btn-del{
-  width: 60px;
-}
-.tbody tr input.txt{
+.txt{
   width: 30px;
   height: 25px;
   border: 1px solid rgb(245, 108, 108);
   border-radius: 5px;
   text-align: center;
+  outline: none;
 }
 </style>

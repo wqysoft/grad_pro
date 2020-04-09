@@ -18,14 +18,14 @@ name:"friendLink",
 data(){
   return{
     images:[
-      {id:7,src:require("../../assets/youku.jpg"),link:"http://www.youku.com",name:"优酷"},
-      {id:2,src:require("../../assets/aiqiyi.jpg"),link:"http://www.iqiyi.com",name:"爱奇艺"},
-      {id:3,src:require("../../assets/easeyun.jpg"),link:"https://music.163.com",name:"网易云音乐"},
-      {id:4,src:require("../../assets/gaode.jpg"),link:"https://www.amap.com/",name:"高德地图"},
-      {id:5,src:require("../../assets/google.jpg"),link:"http://www.google.cn",name:"谷歌"},
-      {id:6,src:require("../../assets/sina.jpg"),link:"https://www.sina.com.cn",name:"新浪"},
-      {id:1,src:require("../../assets/baidu.jpg"),link:"https://www.baidu.com",name:"百度"},
-      {id:8,src:require("../../assets/taobao.jpg"),link:"https://www.taobao.com/",name:"淘宝"},
+      {id:7,src:"../../../static/youku.jpg",link:"http://www.youku.com",name:"优酷"},
+      {id:2,src:"../../../static/aiqiyi.jpg",link:"http://www.iqiyi.com",name:"爱奇艺"},
+      {id:3,src:"../../../static/easeyun.jpg",link:"https://music.163.com",name:"网易云音乐"},
+      {id:4,src:"../../../static/gaode.jpg",link:"https://www.amap.com/",name:"高德地图"},
+      {id:5,src:"../../../static/google.jpg",link:"http://www.google.cn",name:"谷歌"},
+      {id:6,src:"../../../static/sina.jpg",link:"https://www.sina.com.cn",name:"新浪"},
+      {id:1,src:"../../../static/baidu.jpg",link:"https://www.baidu.com",name:"百度"},
+      {id:8,src:"../../../static/taobao.jpg",link:"https://www.taobao.com/",name:"淘宝"},
           ]
         }
       },

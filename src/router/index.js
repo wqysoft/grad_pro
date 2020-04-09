@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home/Home'
+import Detail from '@/components/Home/Detail'
 import Cart from '@/components/Cart/Cart'
 import FriendLink from '@/components/FriendLink/FriendLink'
 import MyOrder from '@/components/MyOrder/MyOrder'
@@ -16,14 +17,14 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
+    // {
+    //   path: '/',
+    //   redirect: '/home'
+    // },
     {
       path: '/',
-      redirect: '/home'
-    },
-    {
-      path: '/home',
       name: 'home',
-      component: Home
+      component: Home,
     },
     {
       path: '/myorder',
@@ -41,17 +42,22 @@ export default new Router({
       component: Cart
     },
     {
+      path:'/detail',
+      name:'detail',
+      component:Detail
+    },
+    {
       path: '/login',
       name: 'login',
       component: Login,
       children: [
         { 
-          path: '/login/userLogin',
+          path: '/userLogin',
           name:'userLogin',
           component:UserLogin 
         },
         { 
-          path: '/login/adminLogin',
+          path: '/adminLogin',
           name:'adminLogin',
           component:AdminLogin 
         }
@@ -63,12 +69,12 @@ export default new Router({
       component: Register,
       children:[
         {
-          path: '/register/userRegister',
+          path: '/userRegister',
           name:'userRegister',
           component:UserRegister 
         },
         {
-          path: '/register/adminRegister',
+          path: '/adminRegister',
           name:'adminRegister',
           component:AdminRegister 
         }

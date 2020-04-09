@@ -27,6 +27,17 @@ export default {
 </script>
 
 <style scoped>
+.register{
+  width: 80%;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+}
+.login-menu{
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  margin: 0 auto;
+}
 a{
   color: #2c3e50;
   font-size: 1.2em;
@@ -38,17 +49,7 @@ a:hover,a:active{
 }
 .minitip{
   width: 30%;
-  margin: 0 auto;
-  margin-top: 50px;
+  margin: 50px auto;
   color: #aaa;
-}
-.register{
-  width: 100%;
-}
-.login-menu{
-  display: flex;
-  justify-content: space-between;
-  width: 50%;
-  margin: 0 auto;
 }
 </style>

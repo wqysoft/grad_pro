@@ -2,9 +2,10 @@
   <div id="app">
        <!-- 导航栏 -->
     <el-menu :default-active="activeIndex" class="el-menu-top" mode="horizontal">
-      <el-menu-item class="el-menu-top-item">电话：0571-888888</el-menu-item>
-      <el-menu-item class="el-menu-top-item">服务时间：9：00-21：00</el-menu-item>
-      <el-menu-item class="el-menu-top-item">地址：浙江省杭州市江干区</el-menu-item>
+      <el-menu-item class="el-menu-top-item el-icon-phone-outline
+">电话：0571-888888</el-menu-item>
+      <el-menu-item class="el-menu-top-item el-icon-alarm-clock">服务时间：9：00-21：00</el-menu-item>
+      <el-menu-item class="el-menu-top-item el-icon-location-outline">地址：浙江省杭州市江干区</el-menu-item>
     </el-menu>
     <el-row>
       <el-col :span="16">
@@ -23,7 +24,7 @@
       <el-col :span="8">
         <div class="grid-content bg-purple">
           <el-menu :default-active="activeIndex" class="el-menu-bottom" mode="horizontal">
-            <el-menu-item v-for="item in login" :key="item.id" >
+            <el-menu-item v-for="item in login" :key="item.id">
               <router-link :to="item.routerName">{{item.name}}</router-link></el-menu-item>
           </el-menu>
         </div>
@@ -80,6 +81,7 @@ a{
   text-decoration: none;
 }
 .logo_image{
+  outline:none;
   width: 100px;
   float: left;
   margin: 0 80px;

@@ -29,6 +29,7 @@ export default {
 .login{
   width: 60%;
   margin: 0 auto;
+  border: 1px solid #ddd;
 }
 a{
   color: #2c3e50;

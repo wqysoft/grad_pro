@@ -12,13 +12,14 @@
         <img :src="item.src" class="food-item-img" alt="图片加载失败"/>
         <h3>{{item.name}}</h3>
         <p>价格：￥{{item.price}}</p>
-        <el-button class="food-item-btn" type="danger">查看详情</el-button>
+        <el-button class="food-item-btn" type="danger" @click="gotoDetail(item)">查看详情</el-button>
       </div>
       <el-pagination background :page-count="5" :total="total" @current-change="currentChange"></el-pagination>
     </div>
   </div>
 </template>
 <script>
+import { prodList } from '../../mock.js'
 export default {
   name: "home",
   data() {
@@ -34,19 +35,17 @@ export default {
         { id: 4, src: require("../../assets/banner4.jpg") },
         { id: 5, src: require("../../assets/banner5.jpg") }
       ],
-      imgList: [
-        {id: 1,src: require("../../assets/eggPuff.jpg"),name: "蛋黄酥",price: 28.0},
-        {id: 2,src: require("../../assets/nougat.jpg"),name: "牛奶燕麦糖",price: 28.0},
-        {id: 3,src: require("../../assets/oats.jpg"),name: "牛轧糖",price: 28.0},
-        {id: 4,src: require("../../assets/pineappleCake.jpg"),name: "凤梨酥",price: 28.0},
-        {id: 5,src: require("../../assets/potato.jpg"),name: "麻薯",price: 28.0}
-      ]
+      imgList: prodList
     };
   },
-  created() {
-
-  },
   methods: {
+    gotoDetail(item){
+      console.log(item)
+      this.$router.push({
+        name:'detail',
+        query:{id:encodeURIComponent(item.id)}
+      })
+    },
       // 获取当前页
     currentChange(val) {
       this.page = val;
