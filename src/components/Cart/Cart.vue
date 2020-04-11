@@ -14,7 +14,7 @@
           <table class="table">
             <thead>
               <tr>
-                <th><input v-model="allChecked" type="checkbox" class="check"></th>
+                <!-- <th><input v-model="allChecked" type="checkbox" class="check" @click="allChecked"></th> -->
                 <th class="name">商品名称</th>
                 <th>商品单价</th>
                 <th>购买数量</th>
@@ -24,7 +24,7 @@
             </thead>
             <tbody class="tbody">
               <tr v-for="(v,k) in goods" :key="v.id" class="tbody-tr">
-                <td><input type="checkbox" class="check"></td>
+                <!-- <td><input type="checkbox" class="check"></td> -->
                 <td>{{v.name}}</td>
                 <td>{{v.price}}</td>
                 <td>
@@ -58,9 +58,9 @@ export default {
       goods: [],
       id:'',
       //控制全选
-      allChecked: true,
+      //allChecked: false,
       //商品数据选中
-      allSelectData: []
+      //allSelectData: []
     };
   },
   methods: {

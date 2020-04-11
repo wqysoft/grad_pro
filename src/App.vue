@@ -2,8 +2,7 @@
   <div id="app">
        <!-- 导航栏 -->
     <el-menu :default-active="activeIndex" class="el-menu-top" mode="horizontal">
-      <el-menu-item class="el-menu-top-item el-icon-phone-outline
-">电话：0571-888888</el-menu-item>
+      <el-menu-item class="el-menu-top-item el-icon-phone-outline">电话：0571-888888</el-menu-item>
       <el-menu-item class="el-menu-top-item el-icon-alarm-clock">服务时间：9：00-21：00</el-menu-item>
       <el-menu-item class="el-menu-top-item el-icon-location-outline">地址：浙江省杭州市江干区</el-menu-item>
     </el-menu>
@@ -11,7 +10,7 @@
       <el-col :span="16">
         <div class="grid-content bg-purple">
           <el-menu :default-active="activeIndex" class="el-menu-bottom" mode="horizontal">
-              <el-image class="logo_image" :src="url"/>
+              <el-image class="logo_image" @click="clickLogo" :src="url"/>
             <el-menu-item v-for="item in nav" :key="item.id">
               <router-link :to="item.routerName">{{item.name}}</router-link></el-menu-item>
           </el-menu>
@@ -42,7 +41,7 @@
   ]
   let login = [
     {id:1,name:"登录",routerName:{name:'login'}},
-    {id:2,name:"注册",routerName:{name:'register'}},
+    // {id:2,name:"注册",routerName:{name:'register'}},
     {id:3,name:"购物车",routerName:{name:'cart'}},
   ]
 export default {
@@ -61,7 +60,15 @@ export default {
     selected:function(newV,oldV){
       console.log(newV,oldV)
     }
+  },
+  methods:{
+    clickLogo(){
+      this.$router.push({
+        name:'home'
+      })
+    }
   }
+  
 };
 </script>
 <style>

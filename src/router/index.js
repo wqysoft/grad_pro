@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home/Home'
+import AdminHome from '@/components/Home/AdminHome'
+import AddGoods from '@/components/Home/AddGoods'
 import Detail from '@/components/Home/Detail'
 import Cart from '@/components/Cart/Cart'
 import FriendLink from '@/components/FriendLink/FriendLink'
@@ -16,30 +18,50 @@ import UserLogin from '@/components/Login/UserLogin'
 Vue.use(Router)
 
 export default new Router({
+  
   routes: [
-    // {
-    //   path: '/',
-    //   redirect: '/home'
-    // },
     {
-      path: '/',
+      path:'/',
+      redirect:'home'
+    },
+    {
+      path: '/home',
       name: 'home',
       component: Home,
     },
     {
+      path: '/adminHome',
+      name: 'adminHome',
+      component: AdminHome,
+    },
+    {
+      path: '/adminHome/addGoods',
+      name: 'addGoods',
+      component: AddGoods,
+    },
+    {
       path: '/myorder',
       name: 'myorder',
-      component: MyOrder
+      component: MyOrder,
+      meta:{
+        requireUserInfo:false
+      }
     },
     {
       path: '/person',
       name: 'person',
-      component: Person
+      component: Person,
+      meta:{
+        requireUserInfo:false
+      }
     },
     {
       path: '/cart',
       name: 'cart',
-      component: Cart
+      component: Cart,
+      meta:{
+        requireUserInfo:false
+      }
     },
     {
       path:'/detail',
@@ -84,7 +106,7 @@ export default new Router({
       path: '/friendLink',
       name: 'friendLink',
       component: FriendLink,
-
     },
   ]
+  
 })

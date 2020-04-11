@@ -1,6 +1,5 @@
-let user = [
+let users = [
   {
-    id: 0,
     username: 123456,
     password: 123456,
     sex: '女',
@@ -9,6 +8,13 @@ let user = [
     email: "123456@qq.com"
   }
 ]
+let admins = [
+    {
+    username: 123456,
+    password: 123456,
+    code:"qwertyuiop"
+    }
+  ]
 let prodList = [
   {
     "id": "0",
@@ -103,4 +109,4 @@ let prodList = [
 ]
 let goods = []
 
-export { user,prodList,goods }
+export { users,admins,prodList,goods }

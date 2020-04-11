@@ -5,8 +5,8 @@
   <el-form-item label="用户名" prop="username">
     <el-input v-model.number="ruleForm.username"></el-input>
   </el-form-item>
-  <el-form-item label="密码" prop="pass">
-    <el-input type="password" v-model="ruleForm.pass" autocomplete="off"></el-input>
+  <el-form-item label="密码" prop="password">
+    <el-input type="password" v-model="ruleForm.password" autocomplete="off"></el-input>
   </el-form-item>
   <el-form-item label="确认密码" prop="checkPass">
     <el-input type="password" v-model="ruleForm.checkPass" autocomplete="off"></el-input>
@@ -19,21 +19,14 @@
 </div>
 </template>
 <script>
-import { user } from '../../mock.js'
+import { admins } from '../../mock.js'
 export default {
   name:'adminLogin',
    data() {
       var checkUsername = (rule, value, callback) => {
-        if (!value) {
-          return callback(new Error('用户名不能为空'));
+        if (value === '') {
+          return callback(new Error('请输入用户名'));
         }
-        // setTimeout(() => {
-        //   if (!Number.isInteger(value)) {
-        //     callback(new Error('用户名只能有数字、字母和下划线'));
-        //   } else {
-        //       callback();
-        //   }
-        // }, 1000);
       };
       var validatePass = (rule, value, callback) => {
         if (value === '') {
@@ -48,7 +41,7 @@ export default {
       var validatePass2 = (rule, value, callback) => {
         if (value === '') {
           callback(new Error('请再次输入密码'));
-        } else if (value !== this.ruleForm.pass) {
+        } else if (value !== this.ruleForm.password) {
           callback(new Error('两次输入密码不一致!'));
         } else {
           callback();
@@ -57,14 +50,14 @@ export default {
       return {
         ruleForm: {
           username: '',
-          pass: '',
+          password: '',
           checkPass: '',
         },
         rules: {
           username: [
             { validator: checkUsername, trigger: 'blur' }
           ],
-          pass: [
+          password: [
             { validator: validatePass, trigger: 'blur' }
           ],
           checkPass: [
@@ -74,19 +67,19 @@ export default {
       };
     },
     methods: {
-      submitForm(formName) {
-        this.$refs[formName].validate((valid) => {
-          if (valid) {
-            alert('submit!');
-          } else {
-            console.log('error submit!!');
-            return false;
-          }
-        });
-      },
+     submitForm(form) {
+        if(form.username !== admins.username && form.password !== admins.password){
+          alert('用户名和密码输入错误');
+        }else{
+          alert('登录成功');
+          this.$router.push({
+            name:'adminHome'
+          })
+        }
+        },
       register() {
         this.$router.push({
-          name:'adminRegister'
+        name:'userRegister',
         })
       }
     }

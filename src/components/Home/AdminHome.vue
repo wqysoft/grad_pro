@@ -1,12 +1,12 @@
 <template>
   <div class="home">
     <!-- 轮播图 -->
-    <el-carousel trigger="click" height="500px">
+    <el-carousel height="500px">
       <el-carousel-item v-for="item in carouses" :key="item.id">
         <img class="small" :src="item.src"/>
       </el-carousel-item>
     </el-carousel>
-    <h2>随意选购</h2>
+    <h2>随意选购 <el-button class="food-item-btn" type="danger" @click="addGoods(item)">添加商品</el-button></h2>
     <div class="food">
       <div class="food-item" v-for="item in imgList" :key="item.id">
         <img :src="item.src" class="food-item-img" alt="图片加载失败"/>
@@ -39,13 +39,18 @@ export default {
     };
   },
   methods: {
+    addGoods(){
+      this.$router.push({
+        name:'addGoods'
+      })
+    },
     gotoDetail(item){
+      console.log(item)
       this.$router.push({
         name:'detail',
         query:{id:encodeURIComponent(item.id)}
       })
-    },
-      // 获取当前页
+    }, // 获取当前页
     currentChange(val) {
       this.page = val;
       console.log(this.page)
@@ -62,7 +67,6 @@ export default {
         if (this.gameNum[j]) {
           this.displayData.push(this.gameNum[j]);
         }
-      console.log(displayData);
       }
     },
     totalPageNum(){//总条数获取

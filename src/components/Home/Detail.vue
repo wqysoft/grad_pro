@@ -28,7 +28,7 @@ export default {
       prodList,
       id:'',
       clickNum:0,
-      src:require("../../../static/eggPuff.jpg")
+      src:''
     };
   },
   methods:{
@@ -64,8 +64,8 @@ export default {
   padding: 10px;
 }
 .detail-image img{
-  width: 400px;
-  height: 300px;
+  width: 252px;
+  height: 252px;
 }
 .detail-text{
   margin: 10px 20px;
